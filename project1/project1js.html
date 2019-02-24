@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pong</title>
-
+	
 	<!-- Basic styling, centering the canvas -->
 	<style>
 	canvas {
@@ -18,21 +18,27 @@
 	</style>
 </head>
 <body>
+<!--start/stop game on click-->
+<input type="button" value="Start" onclick="startStop()" id="startButton">
+<h1 id = "startScreen" align = "center">Welcome to Pong! </h1>
+
 <script>
 var
 /**
  * Constants
  */
+start = null, 
  
  /**
   *WIDTH & HEIGHT used in drawing canvas
   * and some objects within canvas
  */ 
-WIDTH  = 1200,
+WIDTH  = 1100,
 HEIGHT = 700,
 pi = Math.PI,
 UpArrow   = 38,
 DownArrow = 40,
+id,
 /**
  * Game elements
  */
@@ -194,12 +200,43 @@ ball = {
 	draw: function() {
 		ctx.fillRect(this.x, this.y, this.side2, this.side2);
 	}
-};
-/**
- * Starts the game
+}
+
+ /**
+ *create function to 
+ *start and stop the game
  */
+startStop = function(){
+    if(start != null){
+        stop();
+    } else {
+        main();
+    }
+   change();
+}
+
+ /**
+ * function to change button name
+ */
+ 
+change = function(){
+var elem = document.getElementById("startButton");
+if (elem.value=="Stop") elem.value = "Start";
+else elem.value = "Stop";
+}
+
+/**
+ * function to reset game
+ */
+
+stop = function(){
+    document.location.reload();
+	start = null;
+}
+
 function main() {
 	// create, initiate and append game canvas
+	start = 1;
 	canvas = document.createElement("canvas");
 	canvas.width = WIDTH;
 	canvas.height = HEIGHT;
@@ -219,12 +256,17 @@ function main() {
 		update();
 		draw();
 		window.requestAnimationFrame(loop, canvas);
-	};
-	window.requestAnimationFrame(loop, canvas);
+		}
+	
+	window.requestAnimationFrame(loop,canvas);
+	
 }
 /**
  * Initatite game objects and set start positions
  */
+ 
+ 
+ 
 function init() {
 	player.x = player.width;
 	player.y = (HEIGHT - player.height)/2;
@@ -239,6 +281,7 @@ function update() {
 	ball.update();
 	player.update();
 	ai.update();
+	
 }
 /**
  * Clear canvas and draw all game objects and net
@@ -261,8 +304,8 @@ function draw() {
 	}
 	ctx.restore();
 }
-// start and run the game
-main();
+
+//main();
 </script>
 </body>
 </html>
