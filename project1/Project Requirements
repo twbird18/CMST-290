@@ -1,0 +1,13 @@
+Please complete the following changes:
+1. Modify the speed of the ball.
+2. Modify the size of the ball.
+3. Modify the height of the canvas.
+4. Modify the width of the canvas.
+5. Modify the speed of the Player's Paddle (Note: the Player's Paddle is located on the left side of the canvas).
+6. Modify the speed of the AI's Paddle (Note: the AI's Paddle is located on the right side of the canvas).
+
+Advanced JavaScript Challenge
+If you completed this assignment with relative ease, consider making additional modifications or changes in the EXISTING code.  Here are some examples:
+1. Add a Start/Stop button.
+2. Create a scoring mechanism.
+3. Add sound.
